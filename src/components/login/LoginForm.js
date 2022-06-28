@@ -21,7 +21,11 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    if (email && name) setButtonDisabled(false);
+    if (email && name) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
   }, [email, name]);
 
   return (
