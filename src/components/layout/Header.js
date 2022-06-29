@@ -3,9 +3,7 @@ import React from 'react';
 import logo from '../../trivia.png';
 import '../../App.css';
 
-import {
-  ButtonSettings,
-} from '../index';
+import ButtonSettings from '../settings/ButtonSettings';
 
 const Header = () => (
   <header className="App-header">
