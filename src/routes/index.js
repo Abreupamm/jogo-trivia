@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import {
   Login,
   Game,
+  Settings,
 } from '../pages';
 
 const Routes = () => (
@@ -13,6 +14,9 @@ const Routes = () => (
     </Route>
     <Route path="/game">
       <Game />
+    </Route>
+    <Route path="/settings">
+      <Settings />
     </Route>
   </Switch>
 );
