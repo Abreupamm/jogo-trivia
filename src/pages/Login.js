@@ -16,7 +16,6 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const handleLogin = (email, name) => {
-    console.log(email);
     const payload = {
       name,
       gravatarEmail: email,
