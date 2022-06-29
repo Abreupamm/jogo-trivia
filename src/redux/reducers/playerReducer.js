@@ -1,4 +1,4 @@
-import { SET_GRAVATAR_EMAIL } from '../actions';
+import { SET_PLAYER } from '../actions';
 
 const initialState = {
   name: '',
@@ -9,10 +9,10 @@ const initialState = {
 
 const playerReducer = (state = initialState, action) => {
   switch (action.type) {
-  case SET_GRAVATAR_EMAIL:
+  case SET_PLAYER:
     return {
       ...state,
-      gravatarEmail: action.payload,
+      ...action.payload,
     };
   default:
     return state;

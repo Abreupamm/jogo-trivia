@@ -1,5 +1,9 @@
-// import React from 'react';
+import React from 'react';
 
-const Game = () => {};
+const Game = () => (
+  <div id="game-page">
+    <h1>Game</h1>
+  </div>
+);
 
 export default Game;
