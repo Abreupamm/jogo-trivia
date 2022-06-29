@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-const LoginForm = () => {
+const LoginForm = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -20,6 +21,11 @@ const LoginForm = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin(email, name);
+  };
+
   useEffect(() => {
     if (email && name) {
       setButtonDisabled(false);
@@ -29,7 +35,7 @@ const LoginForm = () => {
   }, [email, name]);
 
   return (
-    <form>
+    <form onSubmit={ handleSubmit }>
       <label htmlFor="gravatar-email">
         Email do Gravatar:
         <input
@@ -63,6 +69,10 @@ const LoginForm = () => {
       </button>
     </form>
   );
+};
+
+LoginForm.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
 };
 
 export default LoginForm;

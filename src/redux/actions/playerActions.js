@@ -1,11 +1,11 @@
-const SET_GRAVATAR_EMAIL = 'SET_EMAIL';
+const SET_PLAYER = 'SET_PLAYER';
 
-const actSetGravatarEmail = (payload) => ({
-  type: SET_GRAVATAR_EMAIL,
+const actSetPlayer = (payload) => ({
+  type: SET_PLAYER,
   payload,
 });
 
 export {
-  SET_GRAVATAR_EMAIL,
-  actSetGravatarEmail,
+  SET_PLAYER,
+  actSetPlayer,
 };
