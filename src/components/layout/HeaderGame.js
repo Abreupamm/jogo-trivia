@@ -1,21 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import md5 from 'crypto-js';
+import md5 from 'crypto-js/md5';
 
 class HeaderGame extends React.Component {
-  gravatarEmail = () => {
-    const { email } = this.props;
-    const emailMd = md5(email).toString();
-    return emailMd;
-  }
-
   render() {
-    const { name } = this.props;
+    const { name, email } = this.props;
+    const emailMd = md5(email);
     return (
       <div>
         <img
-          src={ `https://www.gravatar.com/avatar/${this.gravatarEmail}` }
+          src={ `https://www.gravatar.com/avatar/${emailMd}` }
           alt=""
           data-testid="header-profile-picture"
         />
