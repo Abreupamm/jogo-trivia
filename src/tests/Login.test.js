@@ -1,18 +1,15 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import {createMemoryHistory} from 'history';
 import App from '../App';
+import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
 import { Router } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 
 describe('Testando o componente Login.js', () => {
   beforeEach(() => {
     const history = createMemoryHistory();
-    render(
-      <Router history={ history }>
-        <App />
-      </Router>,
-    );
+    renderWithRouterAndRedux(<App />);
   });
 
   
@@ -24,7 +21,7 @@ describe('Testando o componente Login.js', () => {
     expect(elementEmail).toBeInTheDocument;
     expect(elementButton).toBeInTheDocument;
   });
-  test('verifica se é possivel fazer login', async ()=>{
+  test('verifica se é possivel fazer login', ()=>{
     const elementName = screen.getByTestId('input-player-name');
     const elementEmail = screen.getByTestId('input-gravatar-email');
     const elementButton = screen.getByTestId('btn-play');
@@ -36,6 +33,6 @@ describe('Testando o componente Login.js', () => {
     expect(elementEmail).toHaveValue('test@test.com');
     expect(elementButton).not.ToBeDisabled;
     userEvent.click(elementButton);
-    await screen.findByText('Maria');
+    expect(elementName).toBeInTheDocument;
   });
 });
