@@ -36,7 +36,7 @@ body {
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   justify-content: center;
-  min-height: 100vh;
+  min-height: 30vh;
 }
 
 .App-link {
@@ -60,6 +60,14 @@ body {
   40%, 60% {
     transform: translate3d(4px, 0, 0);
   }
+}
+
+.input-email {
+  padding-right: 10px;
+}
+
+.input-name {
+  padding-right: 10px;
 }
 
 .header-game {

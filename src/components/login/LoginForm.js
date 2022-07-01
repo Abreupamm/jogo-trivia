@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import '../../App.css';
+
 const LoginForm = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -36,7 +38,7 @@ const LoginForm = ({ handleLogin }) => {
 
   return (
     <form onSubmit={ handleSubmit }>
-      <label htmlFor="gravatar-email">
+      <label htmlFor="gravatar-email" className="input-email">
         Email do Gravatar:
         <input
           type="email"
@@ -47,7 +49,7 @@ const LoginForm = ({ handleLogin }) => {
           data-testid="input-gravatar-email"
         />
       </label>
-      <label htmlFor="player-name">
+      <label htmlFor="player-name" className="input-name">
         Nome do Jogador:
         <input
           type="text"
