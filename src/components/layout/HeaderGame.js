@@ -14,7 +14,7 @@ class HeaderGame extends React.Component {
           alt=""
           data-testid="header-profile-picture"
         />
-        <span data-testid="header-player-name">{name}</span>
+        <span data-testid="header-player-name">{`Jogador: ${name}`}</span>
         <span>Placar:</span>
         <span data-testid="header-score">{0}</span>
       </div>
