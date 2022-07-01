@@ -3,20 +3,35 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import md5 from 'crypto-js/md5';
 
+import '../../App.css';
+
 class HeaderGame extends React.Component {
+  state = {
+    placar: 0,
+  }
+
   render() {
     const { name, email } = this.props;
+    const { placar } = this.state;
     const emailMd = md5(email);
     return (
-      <div>
-        <img
-          src={ `https://www.gravatar.com/avatar/${emailMd}` }
-          alt=""
-          data-testid="header-profile-picture"
-        />
-        <span data-testid="header-player-name">{`Jogador: ${name}`}</span>
-        <span>Placar:</span>
-        <span data-testid="header-score">{0}</span>
+      <div className="header-game">
+        <div className="header-profile-picture">
+          <img
+            src={ `https://www.gravatar.com/avatar/${emailMd}` }
+            alt=""
+            data-testid="header-profile-picture"
+            className="img-profile"
+          />
+          <p
+            className="profile-name"
+            data-testid="header-player-name"
+          >
+            {`Jogador: ${name}`}
+
+          </p>
+        </div>
+        <p data-testid="header-score">{`Placar: ${placar}`}</p>
       </div>
     );
   }

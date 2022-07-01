@@ -61,3 +61,24 @@ body {
     transform: translate3d(4px, 0, 0);
   }
 }
+
+.header-game {
+  background-color: grey;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px
+}
+
+.header-profile-picture {
+  display: flex;
+}
+
+.profile-name {
+  padding-left: 10px;
+}
+
+.img-profile {
+  border-radius: 50%;
+  width: 50px;
+}
