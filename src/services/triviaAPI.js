@@ -9,14 +9,14 @@ const fetchTriviaToken = async () => {
   }
 };
 
-const questionsAmount = 5;
-
-const fetchTriviaQuestions = async (token, amount = questionsAmount) => {
-  const ENDPOINT_URL = `https://opentdb.com/api.php?amount=${amount}&token=${token}`;
+const fetchTriviaQuestions = async (token) => {
+  const questionsAmount = 5;
+  const ENDPOINT_URL = `https://opentdb.com/api.php?amount=${questionsAmount}&token=${token}`;
 
   try {
     const response = await fetch(ENDPOINT_URL);
-    return response.json();
+    const data = await response.json();
+    return data;
   } catch (error) {
     return error;
   }

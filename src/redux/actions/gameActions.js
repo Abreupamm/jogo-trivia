@@ -1,32 +1,16 @@
-import { fetchTriviaToken, fetchTriviaQuestions } from '../../services/triviaAPI';
+import { fetchTriviaQuestions } from '../../services/triviaAPI';
 
-const SET_TOKEN = 'SET_TOKEN';
 const SET_QUESTIONS = 'SET_QUESTIONS';
 
-const actSetToken = (payload) => ({
-  type: SET_TOKEN,
-  payload,
-});
-
-const actSetQuestion = (payload) => ({
+const actSetQuestions = (payload) => ({
   type: SET_QUESTIONS,
   payload,
 });
 
-const fetchToken = () => async (dispatch) => {
-  fetchTriviaToken().then(
+const fetchQuestions = (token) => async (dispatch) => {
+  fetchTriviaQuestions(token).then(
     (response) => {
-      dispatch(actSetToken(response));
-    },
-  ).catch(
-    (error) => console.error(error),
-  );
-};
-
-const fetchQuestions = (amount, token) => async (dispatch) => {
-  fetchTriviaQuestions(amount, token).then(
-    (response) => {
-      dispatch(actSetQuestion(response));
+      dispatch(actSetQuestions(response));
     },
   ).catch(
     (error) => console.error(error),
@@ -34,9 +18,7 @@ const fetchQuestions = (amount, token) => async (dispatch) => {
 };
 
 export {
-  SET_TOKEN,
   SET_QUESTIONS,
-  actSetToken,
-  fetchToken,
+  actSetQuestions,
   fetchQuestions,
 };

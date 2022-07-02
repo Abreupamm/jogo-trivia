@@ -1,42 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import BooleanQuestion from './BooleanQuestion';
-import MultipleQuestion from './MultipleQuestion';
+// import BooleanQuestion from './BooleanQuestion';
+// import MultipleQuestion from './MultipleQuestion';
 
-const QuestionCard = ({ actualQuestion }) => {
-  const {
-    type,
-    category,
-    question,
-  } = actualQuestion;
-
-  const answers = {
-    correct_answer: actualQuestion.correct_answer,
-    incorrect_answers: actualQuestion.incorrect_answers,
-  };
+const QuestionCard = ({ question }) => {
+  const randomSort = 0.5;
+  const answers = [
+    question.correct_answer,
+    ...question.incorrect_answers,
+  ].sort(() => randomSort - Math.random());
 
   return (
     <div id="question-card">
       <h1 data-testid="question-category">
-        { category }
+        { question.category }
       </h1>
       <p data-testid="question-text">
-        { question }
+        { question.question }
       </p>
-      <div id="answer">
-        {
-          type === 'multiple'
-            ? <MultipleQuestion answers={ answers } />
-            : <BooleanQuestion answers={ answers } />
-        }
+      <div id="answers" data-testid="answer-options">
+        { answers.map((answer, index) => (
+          <button
+            type="button"
+            key={ index }
+            data-testid={
+              question.correct_answer.includes(answer)
+                ? 'correct-answer'
+                : `wrong-answer=${index}`
+            }
+          >
+            { answer }
+          </button>
+        )) }
       </div>
     </div>
   );
 };
 
 QuestionCard.propTypes = {
-  actualQuestion: PropTypes.shape({
+  question: PropTypes.shape({
     type: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     question: PropTypes.string.isRequired,

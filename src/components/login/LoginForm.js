@@ -23,7 +23,7 @@ const LoginForm = ({ handleLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(email, name);
+    handleLogin(name, email);
   };
 
   useEffect(() => {
