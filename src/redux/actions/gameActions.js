@@ -1,17 +1,16 @@
-import { fetchTriviaToken } from '../../services/triviaAPI';
+import { fetchTriviaQuestions } from '../../services/triviaAPI';
 
-const SET_TOKEN = 'SET_TOKEN';
+const SET_QUESTIONS = 'SET_QUESTIONS';
 
-const actSetToken = (payload) => ({
-  type: SET_TOKEN,
+const actSetQuestions = (payload) => ({
+  type: SET_QUESTIONS,
   payload,
 });
 
-const fetchToken = () => async (dispatch) => {
-  fetchTriviaToken().then(
+const fetchQuestions = (token) => async (dispatch) => {
+  fetchTriviaQuestions(token).then(
     (response) => {
-      localStorage.setItem('token', response.token);
-      dispatch(actSetToken(response));
+      dispatch(actSetQuestions(response));
     },
   ).catch(
     (error) => console.error(error),
@@ -19,7 +18,7 @@ const fetchToken = () => async (dispatch) => {
 };
 
 export {
-  SET_TOKEN,
-  actSetToken,
-  fetchToken,
+  SET_QUESTIONS,
+  actSetQuestions,
+  fetchQuestions,
 };

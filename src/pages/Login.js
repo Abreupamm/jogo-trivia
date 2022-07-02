@@ -1,33 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { fetchTriviaToken } from '../services/triviaAPI';
+import { actSetPlayer } from '../redux/actions';
 
 import {
   Header,
   LoginForm,
 } from '../components';
-
-import { actSetPlayer, fetchToken } from '../redux/actions';
+import { setToken } from '../utils/handleToken';
 
 const Login = () => {
   const [redirect, setRedirect] = useState(false);
-  const token = useSelector((state) => state.game.token);
-
   const dispatch = useDispatch();
 
-  const handleLogin = (email, name) => {
+  const handleLogin = async (name, email) => {
     const payload = {
       name,
       gravatarEmail: email,
     };
 
-    dispatch(actSetPlayer(payload));
-    dispatch(fetchToken());
+    fetchTriviaToken().then(
+      (response) => {
+        const successfulLogin = 0;
+        if (response.response_code === successfulLogin) {
+          dispatch(actSetPlayer(payload));
+          setToken(response.token);
+          setRedirect(true);
+        }
+      },
+    ).catch(
+      (error) => console.error(error),
+    );
   };
-
-  useEffect(() => {
-    if (token) setRedirect(true);
-  }, [token]);
 
   return (
     <>

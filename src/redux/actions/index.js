@@ -4,15 +4,15 @@ import {
 } from './playerActions';
 
 import {
-  SET_TOKEN,
-  actSetToken,
-  fetchToken,
+  SET_QUESTIONS,
+  fetchQuestions,
+  actSetQuestions,
 } from './gameActions';
 
 export {
   SET_PLAYER,
   actSetPlayer,
-  SET_TOKEN,
-  actSetToken,
-  fetchToken,
+  SET_QUESTIONS,
+  actSetQuestions,
+  fetchQuestions,
 };
