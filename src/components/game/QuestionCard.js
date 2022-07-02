@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './QuestionCard.css';
-
 // import BooleanQuestion from './BooleanQuestion';
 // import MultipleQuestion from './MultipleQuestion';
 
