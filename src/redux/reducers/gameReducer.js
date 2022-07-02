@@ -1,10 +1,10 @@
-import { SET_TOKEN } from '../actions';
+import { SET_TOKEN, SET_QUESTIONS } from '../actions';
 
 const initialState = {
   response_code: 3,
   response_message: '',
   token: '',
-  results: [],
+  results: null,
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -13,6 +13,11 @@ const gameReducer = (state = initialState, action) => {
     return {
       ...state,
       ...action.payload,
+    };
+  case SET_QUESTIONS:
+    return {
+      ...state,
+      results: action.payload.results,
     };
   default:
     return state;

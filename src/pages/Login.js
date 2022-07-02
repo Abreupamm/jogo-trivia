@@ -11,11 +11,13 @@ import { actSetPlayer, fetchToken } from '../redux/actions';
 
 const Login = () => {
   const [redirect, setRedirect] = useState(false);
+
+  const responseCode = useSelector((state) => state.game.response_code);
   const token = useSelector((state) => state.game.token);
 
   const dispatch = useDispatch();
 
-  const handleLogin = (email, name) => {
+  const setLogin = (email, name) => {
     const payload = {
       name,
       gravatarEmail: email,
@@ -26,8 +28,14 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (token) setRedirect(true);
-  }, [token]);
+    if (responseCode === 0) {
+      localStorage.setItem('token', token);
+      setRedirect(true);
+    } else {
+      localStorage.removeItem('token');
+      setRedirect(false);
+    }
+  }, [responseCode, token]);
 
   return (
     <>
@@ -35,7 +43,7 @@ const Login = () => {
       <Header />
       <div className="login-page">
         <h1>Login</h1>
-        <LoginForm handleLogin={ handleLogin } />
+        <LoginForm handleLogin={ setLogin } />
       </div>
     </>
   );
