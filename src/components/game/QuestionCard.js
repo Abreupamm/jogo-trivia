@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import './QuestionCard.css';
-// import BooleanQuestion from './BooleanQuestion';
-// import MultipleQuestion from './MultipleQuestion';
+import Timer from './Timer';
 
 const QuestionCard = ({ question }) => {
   const [clicked, setClicked] = useState(false);
@@ -23,8 +24,11 @@ const QuestionCard = ({ question }) => {
     }
     return 'incorrect';
   };
+  const timeOut = useSelector((state) => state.game.timeOut);
+
   return (
     <div id="question-card">
+      <Timer />
       <h1 data-testid="question-category">
         { question.category }
       </h1>
@@ -37,6 +41,7 @@ const QuestionCard = ({ question }) => {
             className={ clicked ? addStyle(answer) : 'response' }
             type="button"
             key={ index }
+            disabled={ timeOut }
             data-testid={
               question.correct_answer.includes(answer)
                 ? 'correct-answer'

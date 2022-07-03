@@ -1,8 +1,9 @@
-import { SET_QUESTIONS } from '../actions';
+import { SET_QUESTIONS, SET_TIMEOUT } from '../actions';
 
 const initialState = {
   response_code: 3,
   results: null,
+  timeOut: false,
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const gameReducer = (state = initialState, action) => {
     return {
       ...state,
       ...action.payload,
+    };
+  case SET_TIMEOUT:
+    return {
+      ...state,
+      timeOut: action.payload,
     };
   default:
     return state;
