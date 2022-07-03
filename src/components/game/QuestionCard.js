@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import Timer from './Timer';
 
 // import BooleanQuestion from './BooleanQuestion';
 // import MultipleQuestion from './MultipleQuestion';
@@ -11,8 +13,11 @@ const QuestionCard = ({ question }) => {
     ...question.incorrect_answers,
   ].sort(() => randomSort - Math.random());
 
+  const timeOut = useSelector((state) => state.game.timeOut);
+
   return (
     <div id="question-card">
+      <Timer />
       <h1 data-testid="question-category">
         { question.category }
       </h1>
@@ -24,6 +29,7 @@ const QuestionCard = ({ question }) => {
           <button
             type="button"
             key={ index }
+            disabled={ timeOut }
             data-testid={
               question.correct_answer.includes(answer)
                 ? 'correct-answer'
