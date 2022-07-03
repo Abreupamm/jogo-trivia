@@ -1,18 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import './QuestionCard.css';
 import Timer from './Timer';
 
-// import BooleanQuestion from './BooleanQuestion';
-// import MultipleQuestion from './MultipleQuestion';
-
 const QuestionCard = ({ question }) => {
+  const [clicked, setClicked] = useState(false);
   const randomSort = 0.5;
   const answers = [
     question.correct_answer,
     ...question.incorrect_answers,
   ].sort(() => randomSort - Math.random());
 
+  const handeOnClick = () => {
+    setClicked(true);
+    console.log('true');
+  };
+
+  const addStyle = (answer) => {
+    if (question.correct_answer === answer) {
+      return 'correct';
+    }
+    return 'incorrect';
+  };
   const timeOut = useSelector((state) => state.game.timeOut);
 
   return (
@@ -27,6 +38,7 @@ const QuestionCard = ({ question }) => {
       <div id="answers" data-testid="answer-options">
         { answers.map((answer, index) => (
           <button
+            className={ clicked ? addStyle(answer) : 'response' }
             type="button"
             key={ index }
             disabled={ timeOut }
@@ -35,6 +47,7 @@ const QuestionCard = ({ question }) => {
                 ? 'correct-answer'
                 : `wrong-answer=${index}`
             }
+            onClick={ handeOnClick }
           >
             { answer }
           </button>
