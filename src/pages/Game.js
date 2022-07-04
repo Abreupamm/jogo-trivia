@@ -11,7 +11,7 @@ import QuestionCard from '../components/game/QuestionCard';
 
 const Game = () => {
   const questions = useSelector((state) => state.game.results);
-  const code = useSelector((state) => state.game.response_code);
+  const code = useSelector((state) => state.game.indexQuestion);
   const [logout, setLogout] = useState(false);
 
   const dispatch = useDispatch();

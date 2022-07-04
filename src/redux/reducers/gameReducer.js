@@ -1,10 +1,10 @@
-import { SET_QUESTIONS, SET_TIMEOUT, SET_NEXT, SET_CLICK_RESPONSE } from '../actions';
+import { SET_QUESTIONS, SET_TIMEOUT, SET_NEXT } from '../actions';
 
 const initialState = {
   response_code: 3,
   results: null,
   timeOut: false,
-  clickResponse: false,
+  indexQuestion: 0,
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -22,12 +22,7 @@ const gameReducer = (state = initialState, action) => {
   case SET_NEXT:
     return {
       ...state,
-      response_code: action.payload,
-    };
-  case SET_CLICK_RESPONSE:
-    return {
-      ...state,
-      clickResponse: action.payload,
+      indexQuestion: action.payload,
     };
   default:
     return state;
