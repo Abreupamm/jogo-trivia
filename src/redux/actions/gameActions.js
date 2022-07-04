@@ -1,17 +1,34 @@
-import { fetchTriviaToken } from '../../services/triviaAPI';
+import { fetchTriviaQuestions } from '../../services/triviaAPI';
 
-const SET_TOKEN = 'SET_TOKEN';
+const SET_QUESTIONS = 'SET_QUESTIONS';
+const SET_TIMEOUT = 'SET_TIMEOUT';
+const SET_NEXT = 'SET_NEXT';
+const SET_CLICK_RESPONSE = 'SET_CLIK-RESPONSE';
 
-const actSetToken = (payload) => ({
-  type: SET_TOKEN,
+const actSetQuestions = (payload) => ({
+  type: SET_QUESTIONS,
   payload,
 });
 
-const fetchToken = () => async (dispatch) => {
-  fetchTriviaToken().then(
+const actSetTimeOut = (payload) => ({
+  type: SET_TIMEOUT,
+  payload,
+});
+
+const actSetClickResponse = (payload) => ({
+  type: SET_CLICK_RESPONSE,
+  payload,
+});
+
+const actSetNext = (payload) => ({
+  type: SET_NEXT,
+  payload,
+});
+
+const fetchQuestions = (token) => async (dispatch) => {
+  fetchTriviaQuestions(token).then(
     (response) => {
-      localStorage.setItem('token', response.token);
-      dispatch(actSetToken(response));
+      dispatch(actSetQuestions(response));
     },
   ).catch(
     (error) => console.error(error),
@@ -19,7 +36,13 @@ const fetchToken = () => async (dispatch) => {
 };
 
 export {
-  SET_TOKEN,
-  actSetToken,
-  fetchToken,
+  SET_QUESTIONS,
+  SET_TIMEOUT,
+  SET_NEXT,
+  SET_CLICK_RESPONSE,
+  actSetQuestions,
+  actSetTimeOut,
+  fetchQuestions,
+  actSetNext,
+  actSetClickResponse,
 };
