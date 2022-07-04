@@ -30,8 +30,6 @@ const Login = () => {
           setRedirect(true);
         }
       },
-    ).catch(
-      (error) => console.error(error),
     );
   };
 
