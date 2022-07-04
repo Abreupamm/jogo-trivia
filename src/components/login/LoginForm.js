@@ -63,6 +63,7 @@ const LoginForm = ({ handleLogin }) => {
       <button
         type="submit"
         id="btn-play"
+        className="btn-play"
         name="btn-play"
         disabled={ buttonDisabled }
         data-testid="btn-play"

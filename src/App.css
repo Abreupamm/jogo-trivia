@@ -81,7 +81,7 @@ body {
   padding-right: 10px;
 }
 
-#btn-play, .btn-next {
+.btn-play, .btn-next {
   border-radius: 10px;
   border-style: none;
   margin: 10px;
@@ -89,7 +89,7 @@ body {
   padding-right: 30px;
 }
 
-#btn-play:enabled {
+.btn-play:enabled {
   background-color: white;
 }
 
