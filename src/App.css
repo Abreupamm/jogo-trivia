@@ -1,8 +1,8 @@
 body {
+  background-image: url('https://wallpaperaccess.com/full/2384075.jpg');
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-image: url("https://wallpaperaccess.com/full/2384075.jpg");
 }
 
 .App {
@@ -72,8 +72,8 @@ body {
 }
 
 #gravatar-email, #player-name {
-  border-style: none;
   border-radius: 5px;
+  border-style: none;
   margin-left: 5px;
 }
 
@@ -81,21 +81,21 @@ body {
   padding-right: 10px;
 }
 
-#btn-play:enabled {
-  background-color: white;
-}
-
-#btn-next, #btn-play {
-  margin: 10px;
-  border-radius: 10px;
+#btn-play, #btn-next  {
   border-style: none;
+  border-radius: 10px;
+  margin: 10px;
   padding-left: 30px;
   padding-right: 30px;
 }
 
+#btn-play:enabled {
+  background-color: white;
+}
+
 .header-game {
   background-color: rgb(88, 132, 141);
-  color: rgb(0, 0, 0);
+  color: black;
   display: flex;
   justify-content: space-evenly;
   padding: 10px;
