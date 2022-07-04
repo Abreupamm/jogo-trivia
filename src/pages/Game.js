@@ -41,7 +41,7 @@ const Game = () => {
     <>
       { logout && <Redirect to="/" /> }
       <HeaderGame />
-      <div id="game-page">
+      <div id="game-page" className="game-page">
         <h1>Game</h1>
         { questions && <QuestionCard question={ questions[code] } /> }
       </div>
