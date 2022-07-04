@@ -55,6 +55,7 @@ const QuestionCard = ({ question }) => {
           <button
             className={ clicked ? addStyle(answer) : 'response' }
             type="button"
+            id="btn-answer"
             key={ index }
             disabled={ timeOut }
             data-testid={

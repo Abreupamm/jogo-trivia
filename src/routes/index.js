@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
+import Feedback from '../pages/Feedback';
 import {
   Login,
   Game,
@@ -17,6 +17,9 @@ const Routes = () => (
     </Route>
     <Route path="/settings">
       <Settings />
+    </Route>
+    <Route path="/feedback">
+      <Feedback />
     </Route>
   </Switch>
 );
