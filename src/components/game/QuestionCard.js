@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import ButtonNext from './ButtonNext';
+import { actSetNext } from '../../redux/actions';
 
 import './QuestionCard.css';
 import Timer from './Timer';
 
 const QuestionCard = ({ question }) => {
   const [clicked, setClicked] = useState(false);
+  const responseCode = useSelector((state) => state.game.response_code);
+
+  const dispatch = useDispatch();
+
   const randomSort = 0.5;
+
   const answers = [
     question.correct_answer,
     ...question.incorrect_answers,
@@ -15,7 +22,15 @@ const QuestionCard = ({ question }) => {
 
   const handeOnClick = () => {
     setClicked(true);
-    console.log('true');
+  };
+
+  const handeOnClickNext = () => {
+    const next = responseCode + 1;
+    const number = 5;
+    if (next < number) {
+      dispatch(actSetNext(next));
+      setClicked(false);
+    }
   };
 
   const addStyle = (answer) => {
@@ -53,6 +68,7 @@ const QuestionCard = ({ question }) => {
           </button>
         )) }
       </div>
+      {clicked && <ButtonNext onClick={ handeOnClickNext } />}
     </div>
   );
 };
