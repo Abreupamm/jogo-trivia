@@ -71,7 +71,7 @@ body {
   padding-right: 10px;
 }
 
-input#gravatar-email, input#player-name {
+.gravatar-email, .player-name {
   border-radius: 5px;
   border-style: none;
   margin-left: 5px;

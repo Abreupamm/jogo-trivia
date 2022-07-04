@@ -43,6 +43,7 @@ const LoginForm = ({ handleLogin }) => {
         <input
           type="email"
           id="gravatar-email"
+          className="gravatar-email"
           name="gravatar-email"
           value={ email }
           onChange={ handleChange }
@@ -54,6 +55,7 @@ const LoginForm = ({ handleLogin }) => {
         <input
           type="text"
           id="player-name"
+          className="player-name"
           name="player-name"
           value={ name }
           onChange={ handleChange }
