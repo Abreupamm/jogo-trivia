@@ -81,9 +81,9 @@ body {
   padding-right: 10px;
 }
 
-#btn-play, #btn-next  {
-  border-style: none;
+#btn-play, .btn-next {
   border-radius: 10px;
+  border-style: none;
   margin: 10px;
   padding-left: 30px;
   padding-right: 30px;
